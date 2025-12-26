@@ -3,104 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ ('menu_title') }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Menu Công Cụ - ScanFile</title>
+    <!-- Sử dụng Tailwind CSS từ CDN để giao diện đẹp mà không cần cài đặt phức tạp -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
     <style>
-        body { background-color: #f0f2f5; padding-top: 50px; }
-        .menu-container { max-width: 900px; margin: 0 auto; }
-        .card-menu {
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            height: 100%;
-            text-decoration: none;
-            color: inherit;
-            display: block;
         }
-        .card-menu:hover {
+        .glass-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-            color: #0d6efd;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .card-body { padding: 2.5rem; text-align: center; }
-        .icon-large { font-size: 3.5rem; margin-bottom: 1rem; }
     </style>
 </head>
-<body>
-    <div class="container menu-container">
-        <div class="d-flex justify-content-between align-items-center mb-5">
-            <div>
-                <h2 class="fw-bold text-primary m-0">{{ ('system_name') }}</h2>
-                <small class="text-muted">{{ ('hello') }}, <strong>{{ session.get('username', 'User') }}</strong> ({{ t('role') }}: {{ session.get('role', 'N/A') }})</small>
-            </div>
-            <div>
-                <div class="btn-group me-2">
-                    <a href="/set_lang/en" class="btn btn-sm btn-outline-secondary {% if current_lang == 'en' %}active{% endif %}">EN</a>
-                    <a href="/set_lang/vi" class="btn btn-sm btn-outline-secondary {% if current_lang == 'vi' %}active{% endif %}">VI</a>
-                </div>
-                <a href="/change_password" class="btn btn-outline-primary me-2">{{ ('change_pass') }}</a>
-                <a href="/logout" class="btn btn-outline-danger">{{ ('logout') }}</a>
-            </div>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-4xl w-full">
+        <!-- Tiêu đề -->
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-blue-600 mb-2">SCANFILE TOOLS</h1>
+            <p class="text-gray-600 italic">{{ t }}</p> <!-- Biến t được truyền từ Flask -->
         </div>
-        <div class="row g-4 justify-content-center">
-            {% if session.get('role') in ['admin', 'scanner'] %}
-            <div class="col-md-4">
-                <a href="/scan_dashboard" class="card card-menu bg-white">
-                    <div class="card-body">
-                        <div class="icon-large">📦</div>
-                        <h4 class="card-title fw-bold">{{ ('scan_dash') }}</h4>
-                        <p class="card-text text-muted">{{ ('scan_desc') }}</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="/check_missing" class="card card-menu bg-white">
-                    <div class="card-body">
-                        <div class="icon-large">🔍</div>
-                        <h4 class="card-title fw-bold">{{ ('check_miss') }}</h4>
-                        <p class="card-text text-muted">{{ ('check_desc') }}</p>
-                    </div>
-                </a>
-            </div>
-            {% endif %}
+
+        <!-- Lưới Menu -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {% if session.get('role') in ['admin', 'printer'] %}
-            <div class="col-md-4">
-                <a href="/statistics" class="card card-menu bg-white">
-                    <div class="card-body">
-                        <div class="icon-large">📊</div>
-                        <h4 class="card-title fw-bold">{{ ('stats') }}</h4>
-                        <p class="card-text text-muted">{{ ('stats_desc') }}</p>
-                    </div>
-                </a>
-            </div>
-            {% endif %}
+            <!-- Item 1: Quét File -->
+            <a href="/scan" class="glass-card p-6 rounded-2xl flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-qrcode text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Quét File</h3>
+                <p class="text-gray-500 text-sm mt-2">Phân tích và kiểm tra độ an toàn của tệp tin.</p>
+            </a>
 
-            {% if session.get('role') in ['admin', 'printer'] %}
-            <div class="col-md-4">
-                <a href="/manual_scaner" class="card card-menu bg-white">
-                    <div class="card-body">
-                        <div class="icon-large">📝</div>
-                        <h4 class="card-title fw-bold">{{ ('manual') }}</h4>
-                        <p class="card-text text-muted">{{ ('manual_desc') }}</p>
-                    </div>
-                </a>
-            </div>
-            {% endif %}
+            <!-- Item 2: Lịch sử -->
+            <a href="/history" class="glass-card p-6 rounded-2xl flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-clock-rotate-left text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Lịch Sử</h3>
+                <p class="text-gray-500 text-sm mt-2">Xem lại các tệp đã quét trước đó.</p>
+            </a>
 
-            {% if session.get('role') == 'admin' %}
-            <div class="col-md-4">
-                <a href="/users" class="card card-menu bg-white">
-                    <div class="card-body">
-                        <div class="icon-large">⚙️</div>
-                        <h4 class="card-title fw-bold">{{ ('user_mgmt') }}</h4>
-                        <p class="card-text text-muted">{{ ('user_desc') }}</p>
-                    </div>
-                </a>
-            </div>
-            {% endif %}
+            <!-- Item 3: Cài đặt -->
+            <a href="/settings" class="glass-card p-6 rounded-2xl flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-gear text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Cài Đặt</h3>
+                <p class="text-gray-500 text-sm mt-2">Tùy chỉnh cấu hình hệ thống cá nhân.</p>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-12 text-center text-gray-400 text-xs">
+            &copy; 2025 ScanFile Project • Hệ thống quét tệp tin tự động
         </div>
     </div>
+
 </body>
 </html>
