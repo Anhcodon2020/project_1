@@ -2,9 +2,10 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return '<h1>Chào mừng bạn đến với ScanFile trên Render!</h1><p>Project đã chạy thành công.</p>'
+@app.route('/', methods=['GET'])
+def menu():
+    return render_template('menu.html')
+
 
 if __name__ == '__main__':
     # Render sẽ cung cấp cổng (Port) tự động qua biến môi trường
