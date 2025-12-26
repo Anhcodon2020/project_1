@@ -31,7 +31,7 @@
     <div class="container menu-container">
         <div class="d-flex justify-content-between align-items-center mb-5">
             <div>
-                <h2 class="fw-bold text-primary m-0">{{ t('system_name') }}</h2>
+                <h2 class="fw-bold text-primary m-0">{{ ('system_name') }}</h2>
                 <small class="text-muted">{{ t('hello') }}, <strong>{{ session.get('username', 'User') }}</strong> ({{ t('role') }}: {{ session.get('role', 'N/A') }})</small>
             </div>
             <div>
@@ -39,8 +39,8 @@
                     <a href="/set_lang/en" class="btn btn-sm btn-outline-secondary {% if current_lang == 'en' %}active{% endif %}">EN</a>
                     <a href="/set_lang/vi" class="btn btn-sm btn-outline-secondary {% if current_lang == 'vi' %}active{% endif %}">VI</a>
                 </div>
-                <a href="/change_password" class="btn btn-outline-primary me-2">{{ t('change_pass') }}</a>
-                <a href="/logout" class="btn btn-outline-danger">{{ t('logout') }}</a>
+                <a href="/change_password" class="btn btn-outline-primary me-2">{{ ('change_pass') }}</a>
+                <a href="/logout" class="btn btn-outline-danger">{{ ('logout') }}</a>
             </div>
         </div>
         <div class="row g-4 justify-content-center">
@@ -49,8 +49,8 @@
                 <a href="/scan_dashboard" class="card card-menu bg-white">
                     <div class="card-body">
                         <div class="icon-large">📦</div>
-                        <h4 class="card-title fw-bold">{{ t('scan_dash') }}</h4>
-                        <p class="card-text text-muted">{{ t('scan_desc') }}</p>
+                        <h4 class="card-title fw-bold">{{ ('scan_dash') }}</h4>
+                        <p class="card-text text-muted">{{ ('scan_desc') }}</p>
                     </div>
                 </a>
             </div>
@@ -58,8 +58,8 @@
                 <a href="/check_missing" class="card card-menu bg-white">
                     <div class="card-body">
                         <div class="icon-large">🔍</div>
-                        <h4 class="card-title fw-bold">{{ t('check_miss') }}</h4>
-                        <p class="card-text text-muted">{{ t('check_desc') }}</p>
+                        <h4 class="card-title fw-bold">{{ ('check_miss') }}</h4>
+                        <p class="card-text text-muted">{{ ('check_desc') }}</p>
                     </div>
                 </a>
             </div>
@@ -70,8 +70,8 @@
                 <a href="/statistics" class="card card-menu bg-white">
                     <div class="card-body">
                         <div class="icon-large">📊</div>
-                        <h4 class="card-title fw-bold">{{ t('stats') }}</h4>
-                        <p class="card-text text-muted">{{ t('stats_desc') }}</p>
+                        <h4 class="card-title fw-bold">{{ ('stats') }}</h4>
+                        <p class="card-text text-muted">{{ ('stats_desc') }}</p>
                     </div>
                 </a>
             </div>
@@ -82,8 +82,8 @@
                 <a href="/manual_scaner" class="card card-menu bg-white">
                     <div class="card-body">
                         <div class="icon-large">📝</div>
-                        <h4 class="card-title fw-bold">{{ t('manual') }}</h4>
-                        <p class="card-text text-muted">{{ t('manual_desc') }}</p>
+                        <h4 class="card-title fw-bold">{{ ('manual') }}</h4>
+                        <p class="card-text text-muted">{{ ('manual_desc') }}</p>
                     </div>
                 </a>
             </div>
@@ -94,8 +94,8 @@
                 <a href="/users" class="card card-menu bg-white">
                     <div class="card-body">
                         <div class="icon-large">⚙️</div>
-                        <h4 class="card-title fw-bold">{{ t('user_mgmt') }}</h4>
-                        <p class="card-text text-muted">{{ t('user_desc') }}</p>
+                        <h4 class="card-title fw-bold">{{ ('user_mgmt') }}</h4>
+                        <p class="card-text text-muted">{{ ('user_desc') }}</p>
                     </div>
                 </a>
             </div>
